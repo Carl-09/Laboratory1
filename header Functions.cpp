@@ -1,9 +1,8 @@
 #include <iostream>
 #include <direct.h>
-#include <dos.h>
 #include <string>
 #include <vector>
-#include <windows.h>
+#include <algorithm>
 
 void list_files();
 void create_directory();
