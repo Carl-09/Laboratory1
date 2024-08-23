@@ -1,30 +1,54 @@
-#include <iostream>
-#include <direct.h>
-#include <dos.h>
-#include <string>
-#include <vector>
-#include <windows.h>
-
-using namespace std;
-
-void list_files();
-void create_directory();
-void change_directory();
-void display_menu();
-
 int main() {
-    int choice;
-    do {
-        display_menu();
+    while (true) {
+        cout << "Main Menu" << endl;
+        cout << "1. List files in the current directory" << endl;
+        cout << "2. Create a new directory" << endl;
+        cout << "3. Change the working directory" << endl;
+        cout << "4. Exit" << endl;
+        cout << "Enter your choice: ";
+
+        int choice;
         cin >> choice;
+
         switch (choice) {
-            case 1: list_files(); break;
-            case 2: create_directory(); break;
-            case 3: change_directory(); break;
-            case 4: exit(0); break;
-            default: error_message("Invalid choice. Please try again.");
+            case 1: {
+                cout << "List Files Menu" << endl;
+                cout << "1. List all files in the current directory" << endl;
+                cout << "2. List files based on a specific extension" << endl;
+                cout << "3. List files based on a pattern" << endl;
+                cout << "Enter your choice: ";
+
+                int file_choice;
+                cin >> file_choice;
+
+                switch (file_choice) {
+                    case 1:
+                        list_files();
+                        break;
+                    case 2:
+                        list_files_by_extension();
+                        break;
+                    case 3:
+                        list_files_by_pattern();
+                        break;
+                    default:
+                        cout << "Invalid choice." << endl;
+                }
+                break;
+            }
+            case 2:
+                create_directory();
+                break;
+            case 3:
+                change_directory();
+                break;
+            case 4:
+                cout << "Exiting program. Goodbye!" << endl;
+                return 0;
+            default:
+                cout << "Invalid choice. Please try again." << endl;
         }
-    } while (true);
+    }
+
     return 0;
 }
-
